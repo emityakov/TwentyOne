@@ -15,7 +15,7 @@ public class Human extends Player {
         return amount;
     }
 
-    
+
     public void setAmount(double amount) {
         if(amount < 0){
             this.amount = 0;
@@ -23,8 +23,6 @@ public class Human extends Player {
         else{
             this.amount = amount;
         }
-
-
     }
 
     @Override

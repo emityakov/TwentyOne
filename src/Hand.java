@@ -1,14 +1,20 @@
+import javax.swing.text.html.HTMLDocument;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
 public class Hand {
 
-    private final List<Card> cards = new ArrayList<>();
+    private final ArrayList<Card> cards = new ArrayList<>();
 
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        for(Card card: cards){
+        //создаем итератор
+        Iterator iterator = this.cards.iterator();
+
+        //проходим по коллекции
+        while(iterator.hasNext()) {
+            Card card = (Card)iterator.next();
             result.append(card).append(" ");
         }
         return result.toString();
@@ -20,8 +26,11 @@ public class Hand {
         int score = 0;
         int aces = 0;
 
+        //создаем итератор
+        Iterator<Card> i = cards.iterator();
         //для каждой карты на руках
-        for(Card card: cards){
+        while (i.hasNext()){
+            Card card = i.next();
             //добавляем значение карты к количеству очков
             score += card.getValue();
             //Сколько тузов было добавлено
@@ -29,6 +38,7 @@ public class Hand {
                 aces++;
             }
         }
+
         //если у нас есть сценарий, в котором у нас есть несколько тузов, как, например, в случае вытягивания 10, за которыми следуют два или более туза (10+11+1 > 21)
         //вернитесь и установите каждый туз на 1, пока не станет меньше 21, если это возможно
         if (score > 21 && aces > 0){

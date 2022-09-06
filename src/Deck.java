@@ -22,12 +22,16 @@ public class Deck {
         //Строка для хранения всего, что мы собираемся вернуть
         StringBuilder output = new StringBuilder();
 
+        //создаем итератор
+        Iterator iterator = deck.iterator();
 
-        for(Card card: deck){
-            //добавить карту и символ для новой строки
+        //проходим по всей коллекции
+        while(iterator.hasNext()) {
+            Card card = (Card) iterator.next();
             output.append(card);
             output.append("\n");
         }
+
         return output.toString();
     }
 
